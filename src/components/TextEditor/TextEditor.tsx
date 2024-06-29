@@ -8,7 +8,6 @@ interface FontStyleData {
 
 const TextEditor = () => {
   const editorRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState<boolean>(false);
   const [fontStylesData, setFontStylesData] = useState<FontStyleData>({});
   const [fontStylesTypes, setFontStylesTypes] = useState<string[]>([]);
   const [selectedFont, setSelectedFont] = useState<string>("");
@@ -53,7 +52,6 @@ const TextEditor = () => {
 
   const getFontStyle = async () => {
     try {
-      setLoading(true);
       const fontData = await axios.get("/punt-frontend-assignment.json");
       const allStylesFamilyType: string[] = Object.keys(fontData.data);
       if (
@@ -82,7 +80,6 @@ const TextEditor = () => {
     } catch (error) {
       console.log(error);
     }
-    setLoading(false);
   };
 
   useEffect(() => {
