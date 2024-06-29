@@ -52,6 +52,7 @@ const TextEditor = () => {
 
   const getFontStyle = async () => {
     try {
+      //user axios so that we can fetch the styles from a server also
       const fontData = await axios.get("/punt-frontend-assignment.json");
       const allStylesFamilyType: string[] = Object.keys(fontData.data);
       if (
